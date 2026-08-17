@@ -11,6 +11,7 @@
         h1 { font-size: 20px; font-weight: 700; text-align: center; color: #111; margin-bottom: 6px; }
         .subtitle { font-size: 13px; text-align: center; color: #666; margin-bottom: 20px; }
         
+        /* 주차 안내 박스 */
         .parking-notice {
             background-color: #fff8f8;
             border: 1px solid #ffe3e3;
@@ -40,6 +41,7 @@
         .dest-name { font-size: 16px; font-weight: 700; color: #222; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
         .dest-address { font-size: 13px; color: #666; }
         
+        /* 뱃지 스타일 */
         .badge { font-size: 11px; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
         .badge-recommend { background-color: #e6fcf5; color: #0ca678; }
         .badge-no-parking { background-color: #fff0f0; color: #e03131; }
@@ -60,6 +62,7 @@
     <h1>웨딩시그니처 오시는 길</h1>
     <p class="subtitle">목적지와 원하시는 지도 어플을 선택해 주세요</p>
 
+    <!-- 지정해주신 문구 적용 안내 박스 -->
     <div class="parking-notice">
         <div class="notice-title">
             <span>🚗 자차 이용 하객 주차 안내</span>
@@ -106,6 +109,7 @@
 </div>
 
 <script>
+    // 각 장소별 정보 (명칭, 좌표)
     const destinations = {
         venue: { name: "웨딩시그니처", lat: 37.552989, lng: 126.918451 },
         park1: { name: "H스퀘어 주차장", lat: 37.552481, lng: 126.917904 },
