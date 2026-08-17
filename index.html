@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웨딩시그니처 주차 및 오시는 길</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
+        body { background-color: #f8f9fa; color: #333; display: flex; justify-content: center; min-height: 100vh; padding: 20px 16px; }
+        .container { width: 100%; max-width: 420px; background: #ffffff; border-radius: 16px; padding: 24px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); height: fit-content; }
+        h1 { font-size: 20px; font-weight: 700; text-align: center; color: #111; margin-bottom: 6px; }
+        .subtitle { font-size: 13px; text-align: center; color: #666; margin-bottom: 24px; }
+        
+        .section-title { font-size: 14px; font-weight: 600; color: #888; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        .dest-option { border: 1px solid #e9ecef; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; }
+        .dest-option.selected { border-color: #2b2b2b; background-color: #fafafa; }
+        .dest-name { font-size: 16px; font-weight: 700; color: #222; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+        .dest-address { font-size: 13px; color: #666; }
+        .badge { font-size: 11px; background: #eee; color: #555; padding: 2px 6px; border-radius: 4px; font-weight: normal; }
+        
+        .map-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; }
+        .map-btn { border: none; border-radius: 10px; padding: 14px 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; }
+        
+        .naver { background-color: #03C75A; color: white; }
+        .kakao { background-color: #FEE500; color: #191919; }
+        .tmap { background-color: #000000; color: white; }
+        
+        .info-text { font-size: 12px; color: #888; text-align: center; margin-top: 20px; line-height: 1.4; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>웨딩시그니처 오시는 길</h1>
+    <p class="subtitle">목적지와 원하시는 지도 어플을 선택해 주세요</p>
+
+    <div class="section-title">1. 목적지 선택</div>
+    
+    <div class="dest-option selected" onclick="selectDestination('venue', this)">
+        <div class="dest-name">웨딩시그니처 (예식장) <span class="badge">본건물</span></div>
+        <div class="dest-address">서울 마포구 양화로 87</div>
+    </div>
+
+    <div class="dest-option" onclick="selectDestination('park1', this)">
+        <div class="dest-name">제1주차장 (H스퀘어)</div>
+        <div class="dest-address">서울 마포구 양화로 81</div>
+    </div>
+
+    <div class="dest-option" onclick="selectDestination('park2', this)">
+        <div class="dest-name">제2주차장 (서교빌딩)</div>
+        <div class="dest-address">서울 마포구 양화로 78</div>
+    </div>
+
+    <div class="section-title" style="margin-top: 20px;">2. 내비게이션 어플 선택</div>
+    
+    <div class="map-buttons">
+        <button class="map-btn naver" onclick="openMap('naver')">
+            <span>네이버 지도</span>
+        </button>
+        <button class="map-btn kakao" onclick="openMap('kakao')">
+            <span>카카오맵</span>
+        </button>
+        <button class="map-btn tmap" onclick="openMap('tmap')">
+            <span>티맵</span>
+        </button>
+    </div>
+
+    <p class="info-text">버튼 클릭 시 현재 위치 기준으로 해당 어플의 길안내가 시작됩니다.</p>
+</div>
+
+<script>
+    // 각 장소별 정보 (명칭, 좌표)
+    const destinations = {
+        venue: { name: "웨딩시그니처", lat: 37.552989, lng: 126.918451 },
+        park1: { name: "H스퀘어 주차장", lat: 37.552481, lng: 126.917904 },
+        park2: { name: "서교빌딩 주차장", lat: 37.552093, lng: 126.917822 }
+    };
+
+    let selectedKey = 'venue';
+
+    function selectDestination(key, element) {
+        selectedKey = key;
+        document.querySelectorAll('.dest-option').forEach(opt => opt.classList.remove('selected'));
+        element.classList.add('selected');
+    }
+
+    function openMap(app) {
+        const target = destinations[selectedKey];
+        const name = encodeURIComponent(target.name);
+        const lat = target.lat;
+        const lng = target.lng;
+
+        // 모바일 접속 여부 확인
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+        if (app === 'naver') {
+            const url = `nmap://route/car?dlat=${lat}&dlng=${lng}&dname=${name}&appname=wedding`;
+            const webUrl = `https://map.naver.com/v5/directions/-/-/-/pt?e=${lng},${lat},${name}`;
+            location.href = isMobile ? url : webUrl;
+            if (isMobile) {
+                setTimeout(() => { location.href = webUrl; }, 1500);
+            }
+        } 
+        else if (app === 'kakao') {
+            const url = `kakaomap://route?ep=${lat},${lng}&by=CAR`;
+            const webUrl = `https://map.kakao.com/link/to/${name},${lat},${lng}`;
+            location.href = isMobile ? url : webUrl;
+            if (isMobile) {
+                setTimeout(() => { location.href = webUrl; }, 1500);
+            }
+        } 
+        else if (app === 'tmap') {
+            const url = `tmap://route?goalname=${name}&goallat=${lat}&goallon=${lng}`;
+            if (isMobile) {
+                location.href = url;
+            } else {
+                alert("티맵은 모바일 기기에서만 연동됩니다.");
+            }
+        }
+    }
+</script>
+
+</body>
+</html>
