@@ -6,8 +6,8 @@
     <title>웨딩시그니처 주차 및 오시는 길</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif; }
-        body { background-color: #f4f6f5; color: #333; display: flex; justify-content: center; min-height: 100vh; padding: 20px 16px; }
-        .container { width: 100%; max-width: 420px; background: #ffffff; border-radius: 16px; padding: 24px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); height: fit-content; border-top: 5px solid #2b5335; }
+        body { background-color: #f8f9fa; color: #333; display: flex; justify-content: center; min-height: 100vh; padding: 20px 16px; }
+        .container { width: 100%; max-width: 420px; background: #ffffff; border-radius: 16px; padding: 24px 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); height: fit-content; }
         h1 { font-size: 20px; font-weight: 700; text-align: center; color: #111; margin-bottom: 6px; }
         .subtitle { font-size: 13px; text-align: center; color: #666; margin-bottom: 20px; }
         
@@ -36,12 +36,12 @@
         .section-title { font-size: 14px; font-weight: 600; color: #888; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px; }
         
         .dest-option { border: 1px solid #e9ecef; border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; cursor: pointer; transition: all 0.2s; }
-        .dest-option.selected { border-color: #c92a2a; background-color: #fffcfc; }
+        .dest-option.selected { border-color: #2b2b2b; background-color: #fafafa; }
         .dest-name { font-size: 16px; font-weight: 700; color: #222; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
         .dest-address { font-size: 13px; color: #666; }
         
         .badge { font-size: 11px; padding: 3px 8px; border-radius: 6px; font-weight: 600; }
-        .badge-recommend { background-color: #ffe3e3; color: #c92a2a; }
+        .badge-recommend { background-color: #e6fcf5; color: #0ca678; }
         
         .map-buttons { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 24px; }
         .map-btn { border: none; border-radius: 10px; padding: 14px 8px; font-size: 14px; font-weight: 600; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px; text-decoration: none; }
@@ -51,30 +51,6 @@
         .tmap { background-color: #000000; color: white; }
         
         .info-text { font-size: 12px; color: #888; text-align: center; margin-top: 20px; line-height: 1.4; }
-
-        /* 화사하고 산뜻한 피치 로즈톤 버튼 스타일 */
-        .invitation-link-section {
-            margin-top: 24px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            text-align: center;
-        }
-        .invitation-btn {
-            display: inline-block;
-            background-color: #e06d6d; /* 화사하고 부드러운 로즈/코랄 톤 */
-            color: #ffffff;
-            padding: 15px 24px;
-            border-radius: 12px;
-            font-size: 15px;
-            font-weight: 600;
-            text-decoration: none;
-            width: 100%;
-            box-shadow: 0 4px 14px rgba(224, 109, 109, 0.25);
-            transition: background-color 0.2s;
-        }
-        .invitation-btn:hover {
-            background-color: #cc5c5c;
-        }
     </style>
 </head>
 <body>
@@ -121,12 +97,6 @@
     </div>
 
     <p class="info-text">버튼 클릭 시 현재 위치 기준으로 해당 어플의 길안내가 시작됩니다.</p>
-
-    <div class="invitation-link-section">
-        <a href="https://salondeletter.com/w/nfntq6z8gf" target="_blank" class="invitation-btn">
-            모바일 청첩장 보러가기 ✨
-        </a>
-    </div>
 </div>
 
 <script>
